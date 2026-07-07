@@ -7,49 +7,49 @@ import { z } from "zod";
 // ── Operator registry ──────────────────────────────────────────────
 // Every profile directory in hafas-client/p/ that ships an index.js
 
-const OPERATORS: Record<string, { name: string; country: string }> = {
-  avv: { name: "Aachener Verkehrsverbund", country: "DE" },
-  bart: { name: "Bay Area Rapid Transit", country: "US" },
-  bls: { name: "BLS AG (Bern)", country: "CH" },
-  bvg: { name: "Berliner Verkehrsbetriebe", country: "DE" },
-  cfl: { name: "Societe Nationale des Chemins de Fer Luxembourgeois", country: "LU" },
-  cmta: { name: "Capital Metro (Austin, TX)", country: "US" },
-  dart: { name: "Des Moines Area Rapid Transit", country: "US" },
-  db: { name: "Deutsche Bahn", country: "DE" },
-  "db-busradar-nrw": { name: "DB Busradar NRW", country: "DE" },
-  insa: { name: "Nahverkehr Sachsen-Anhalt (NASA/INSA)", country: "DE" },
-  invg: { name: "Ingolstadter Verkehrsgesellschaft", country: "DE" },
-  "irish-rail": { name: "Iarnrod Eireann (Irish Rail)", country: "IE" },
-  ivb: { name: "Innsbrucker Verkehrsbetriebe", country: "AT" },
-  kvb: { name: "Kolner Verkehrs-Betriebe", country: "DE" },
-  "mobiliteit-lu": { name: "Mobiliteitszentral (Luxembourg)", country: "LU" },
-  "mobil-nrw": { name: "mobil.nrw", country: "DE" },
-  nahsh: { name: "Nahverkehrsverbund Schleswig-Holstein", country: "DE" },
-  nvv: { name: "Nordhessischer Verkehrsverbund", country: "DE" },
-  oebb: { name: "Osterreichische Bundesbahnen", country: "AT" },
-  ooevv: { name: "Oberosterreichischer Verkehrsverbund", country: "AT" },
-  pkp: { name: "Polskie Koleje Panstwowe", country: "PL" },
-  rejseplanen: { name: "Rejseplanen (Denmark)", country: "DK" },
-  rmv: { name: "Rhein-Main-Verkehrsverbund", country: "DE" },
-  rsag: { name: "Rostocker Strassenbahn AG", country: "DE" },
-  saarfahrplan: { name: "Saarfahrplan / VGS (Saarland)", country: "DE" },
-  salzburg: { name: "Salzburg", country: "AT" },
-  "sbahn-muenchen": { name: "S-Bahn Munchen", country: "DE" },
-  sncb: { name: "Belgian National Railways (SNCB/NMBS)", country: "BE" },
-  stv: { name: "Steirischer Verkehrsverbund", country: "AT" },
-  svv: { name: "Salzburger Verkehrsverbund", country: "AT" },
-  tpg: { name: "Transports publics genevois (Geneva)", country: "CH" },
-  vbb: { name: "Verkehrsverbund Berlin-Brandenburg", country: "DE" },
-  vbn: { name: "Verkehrsverbund Bremen/Niedersachsen", country: "DE" },
-  vkg: { name: "Karntner Linien / Verkehrsverbund Karnten", country: "AT" },
-  vmt: { name: "Verkehrsverbund Mittelthueringen", country: "DE" },
-  vor: { name: "Verkehrsverbund Ost-Region", country: "AT" },
-  vos: { name: "Verkehrsgemeinschaft Osnabruck", country: "DE" },
-  vrn: { name: "Verkehrsverbund Rhein-Neckar", country: "DE" },
-  vsn: { name: "Verkehrsverbund Sud-Niedersachsen", country: "DE" },
-  vvt: { name: "Verkehrsverbund Tirol", country: "AT" },
-  vvv: { name: "Verkehrsverbund Vorarlberg", country: "AT" },
-  zvv: { name: "Zurcher Verkehrsverbund (Zurich)", country: "CH" },
+const OPERATORS: Record<string, { name: string; country: string; locale?: string; timezone?: string }> = {
+  avv: { name: "Aachener Verkehrsverbund", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  bart: { name: "Bay Area Rapid Transit", country: "US", locale: "en-US", timezone: "America/Los_Angeles" },
+  bls: { name: "BLS AG (Bern)", country: "CH", locale: "de-CH", timezone: "Europe/Zurich" },
+  bvg: { name: "Berliner Verkehrsbetriebe", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  cfl: { name: "Societe Nationale des Chemins de Fer Luxembourgeois", country: "LU", locale: "fr-LU", timezone: "Europe/Luxembourg" },
+  cmta: { name: "Capital Metro (Austin, TX)", country: "US", locale: "en-US", timezone: "America/Chicago" },
+  dart: { name: "Des Moines Area Rapid Transit", country: "US", locale: "en-US", timezone: "America/Chicago" },
+  db: { name: "Deutsche Bahn", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  "db-busradar-nrw": { name: "DB Busradar NRW", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  insa: { name: "Nahverkehr Sachsen-Anhalt (NASA/INSA)", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  invg: { name: "Ingolstadter Verkehrsgesellschaft", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  "irish-rail": { name: "Iarnrod Eireann (Irish Rail)", country: "IE", locale: "en-IE", timezone: "Europe/Dublin" },
+  ivb: { name: "Innsbrucker Verkehrsbetriebe", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  kvb: { name: "Kolner Verkehrs-Betriebe", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  "mobiliteit-lu": { name: "Mobiliteitszentral (Luxembourg)", country: "LU", locale: "fr-LU", timezone: "Europe/Luxembourg" },
+  "mobil-nrw": { name: "mobil.nrw", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  nahsh: { name: "Nahverkehrsverbund Schleswig-Holstein", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  nvv: { name: "Nordhessischer Verkehrsverbund", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  oebb: { name: "Osterreichische Bundesbahnen", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  ooevv: { name: "Oberosterreichischer Verkehrsverbund", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  pkp: { name: "Polskie Koleje Panstwowe", country: "PL", locale: "pl-PL", timezone: "Europe/Warsaw" },
+  rejseplanen: { name: "Rejseplanen (Denmark)", country: "DK", locale: "da-DK", timezone: "Europe/Copenhagen" },
+  rmv: { name: "Rhein-Main-Verkehrsverbund", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  rsag: { name: "Rostocker Strassenbahn AG", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  saarfahrplan: { name: "Saarfahrplan / VGS (Saarland)", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  salzburg: { name: "Salzburg", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  "sbahn-muenchen": { name: "S-Bahn Munchen", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  sncb: { name: "Belgian National Railways (SNCB/NMBS)", country: "BE", locale: "fr-BE", timezone: "Europe/Brussels" },
+  stv: { name: "Steirischer Verkehrsverbund", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  svv: { name: "Salzburger Verkehrsverbund", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  tpg: { name: "Transports publics genevois (Geneva)", country: "CH", locale: "fr-CH", timezone: "Europe/Zurich" },
+  vbb: { name: "Verkehrsverbund Berlin-Brandenburg", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  vbn: { name: "Verkehrsverbund Bremen/Niedersachsen", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  vkg: { name: "Karntner Linien / Verkehrsverbund Karnten", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  vmt: { name: "Verkehrsverbund Mittelthueringen", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  vor: { name: "Verkehrsverbund Ost-Region", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  vos: { name: "Verkehrsgemeinschaft Osnabruck", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  vrn: { name: "Verkehrsverbund Rhein-Neckar", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  vsn: { name: "Verkehrsverbund Sud-Niedersachsen", country: "DE", locale: "de-DE", timezone: "Europe/Berlin" },
+  vvt: { name: "Verkehrsverbund Tirol", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  vvv: { name: "Verkehrsverbund Vorarlberg", country: "AT", locale: "de-AT", timezone: "Europe/Vienna" },
+  zvv: { name: "Zurcher Verkehrsverbund (Zurich)", country: "CH", locale: "de-CH", timezone: "Europe/Zurich" },
 };
 
 // ── Dynamic profile loader ─────────────────────────────────────────
@@ -71,8 +71,14 @@ async function getClient(operatorCode: string): Promise<any> {
 
   const { createClient } = await import("hafas-client");
   const profileModule = await import(`hafas-client/p/${code}/index.js`);
-  const profile = profileModule.default || profileModule;
-  const client = createClient(profile, "mcp-hafas-european-rail");
+  const profile = profileModule.profile || profileModule.default || profileModule;
+  const meta = OPERATORS[code];
+  const enrichedProfile = {
+    ...profile,
+    ...(meta.locale && { locale: meta.locale }),
+    ...(meta.timezone && { timezone: meta.timezone }),
+  };
+  const client = createClient(enrichedProfile, "mcp-hafas-european-rail");
   clientCache.set(code, client);
   return client;
 }
